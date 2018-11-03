@@ -106,6 +106,21 @@ inline void dlinkedlist::insert(int item, int pos) {
 		count++;
 	}
 }
+
+inline void dlinkedlist::reverse() {
+	node* tmp = NULL;
+	node* iter = head;
+	while (iter != nullptr) {
+		tmp = iter->prev;
+		iter->prev = iter -> next;
+		iter->next = tmp;
+		iter = iter->prev;
+	}
+	tmp = head;
+	head = tail;
+	tail = tmp;
+}
+
 int main() {
 	dlinkedlist test;
 	test.push_back(5);
