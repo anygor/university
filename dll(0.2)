@@ -1,18 +1,18 @@
 #include <iostream>
 #include<Windows.h>
 using namespace std;
-//            _______
-class dlinkedlist {										//Tail->     |_______| 
-														//           |_______|
-private:												//           |_______|
-	struct node {										//           |_______|
-		int value = NULL;								//           |_______|
-		node*prev = nullptr;//null						//           |_______|
-		node*next = nullptr;//null						//           |_______|
-	};													//           |_______|
-	int count;											//           |_______|
-	node* head;											//           |_______|
-	node* tail;											//head->     |_______|
+
+class dlinkedlist {
+
+private:
+	struct node {
+		int value = NULL;
+		node*prev = nullptr;//null
+		node*next = nullptr;//null
+	};
+	int count;
+	node* head;
+	node* tail;
 	bool is_empty();
 public:
 	dlinkedlist() :head(nullptr), tail(nullptr), count(0) {}
@@ -27,14 +27,14 @@ public:
 	void changeEl(int item, int pos);
 	void insert(int item, int pos);
 };
-inline void dlinkedlist::push_back(int item) {
+void dlinkedlist::push_back(int item) {
 	node*tmp = new node();
 	tmp->next = nullptr;
 	tmp->value = item;
 	if (head != nullptr) { tmp->prev = tail; tail->next = tmp; tail = tmp; count++; }
 	else { tmp->prev = nullptr; head = tail = tmp; count++; }
 }
-inline void dlinkedlist::push_front(int item) {
+void dlinkedlist::push_front(int item) {
 	node*tmp = new node();
 	tmp->prev = nullptr;
 	tmp->value = item;
@@ -42,7 +42,7 @@ inline void dlinkedlist::push_front(int item) {
 	else { tmp->next = nullptr; head = tail = tmp; count++; };
 }
 //remove back element form list
-inline int*  dlinkedlist::pop_back() {
+int*  dlinkedlist::pop_back() {
 	if (!is_empty()) {
 		int* tmp_val = new int(tail->value);
 		node* tmp_tail = tail;
@@ -53,7 +53,7 @@ inline int*  dlinkedlist::pop_back() {
 	return nullptr;
 }
 //remove front element from list
-inline int*	 dlinkedlist::pop_front() {
+int* dlinkedlist::pop_front() {
 	if (!is_empty()) {
 		int* tmp_val = new int(head->value);
 		node* tmp_head = head;
@@ -62,19 +62,13 @@ inline int*	 dlinkedlist::pop_front() {
 		return tmp_val;
 	}
 }
-inline bool dlinkedlist::is_empty() {
+bool dlinkedlist::is_empty() {
 	return !head;
-}
-inline void dlinkedlist::reverse() {
-	if (count <= 1) {}
-	else {
-		;
-	}
 }
 
 
 // change element on pos (item,pos);
-inline void dlinkedlist::changeEl(int item, int pos) {
+void dlinkedlist::changeEl(int item, int pos) {
 	node* tmp = tail;
 	int tmp_c = count;
 	if (pos == tmp_c) { tail->value = item; }
@@ -112,7 +106,7 @@ inline void dlinkedlist::reverse() {
 	node* iter = head;
 	while (iter != nullptr) {
 		tmp = iter->prev;
-		iter->prev = iter -> next;
+		iter->prev = iter->next;
 		iter->next = tmp;
 		iter = iter->prev;
 	}
