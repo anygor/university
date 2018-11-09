@@ -1,0 +1,61 @@
+#include <iostream>
+
+class dll {
+private:
+	struct node {
+		int value;
+		node*prev=nullptr;
+		node*next=nullptr;
+	};
+	node* head;
+	node* tail;
+	bool is_empty();
+public:
+	int pop_back();
+	int pop_front();
+	void push_back(int item);
+	void push_front(int item);
+	void reverse();
+	void insert(int item, int pos);
+};
+
+bool dll::is_empty() {
+	return !head;
+}
+
+int dll::pop_back() {
+	if (!is_empty()){
+		node*tmp = tail;
+		tail = tail->prev;
+		tail->next = nullptr;
+		return tmp->value;
+	}
+	else return 0;
+}
+
+int dll::pop_front() {
+	if (!is_empty()) {
+		node*tmp = head;
+		head = head->next;
+		head->prev = nullptr;
+		return tmp->value;
+	}
+	else return 0;
+}
+
+void dll::push_back(int item) {
+	node*tmp=new node();
+	tmp->prev = tail;
+	tmp->next = nullptr;
+	tmp->value = item;
+	tail->next = tmp;
+	tail = tmp;
+}
+
+
+int main() {
+	dll a;
+	a.push_back(5);
+	std::cout << a.pop_back();
+	return 0;
+}
