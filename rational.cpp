@@ -12,11 +12,11 @@ public:
 	void set(int, int);
 	int getNum();
 	int getDen();
-	rational sum(rational, rational);	// sum
+	rational sum(rational, rational);		// sum
 	rational sub(rational, rational);		// subtraction
 	rational mult(rational, rational);		// multiplication
 	rational div(rational, rational);		// division
-	void print();				// self-explanatory, fractioned
+	void print();					// self-explanatory, fractioned
 };
 
 using namespace std;
