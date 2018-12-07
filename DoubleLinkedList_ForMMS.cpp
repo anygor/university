@@ -81,21 +81,21 @@ void dlinkedlist::changeEl(int item, int pos) {
 }
 
 void dlinkedlist::insert(int item, int pos) {
-	node* tmp_1 = head;
-	int tmp_c = 0;
+	node* tmp_1 = tail;
+	int tmp_c = count;
 	if (pos == tmp_c) { push_back(item); }
 	if (pos == 0) { push_front(item); }
-	if (pos > tmp_c) {
-		while (pos > tmp_c) {
-			tmp_1 = tmp_1->next;
-			tmp_c++;
+	if (pos < tmp_c) {
+		while (pos < tmp_c) {
+			tmp_1 = tmp_1->prev;
+			tmp_c--;
 		}
 		node* prevIns = tmp_1->prev;
 		node* tmp_2 = new node();
 		tmp_2->value = item;
+		tmp_2->next = tmp_1;
 		if (prevIns != 0 && count != 1)
 			prevIns->next = tmp_2;
-		tmp_2->next = tmp_1;
 		tmp_2->prev = prevIns;
 		tmp_1->prev = tmp_2;
 		count++;
