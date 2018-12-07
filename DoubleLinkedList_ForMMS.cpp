@@ -138,9 +138,9 @@ void dlinkedlist::erase(int pos) {
 
 int main() {
 	dlinkedlist test;
-	test.push_back(5);
-	test.push_back(6);
-	test.push_back(7);
+	test.push_back(1);
+	test.push_back(2);
+	test.push_back(4);
 	test.insert(3, 2);
 	test.reverse();
 	cout << *test.pop_back();
