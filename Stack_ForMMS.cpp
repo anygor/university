@@ -2,9 +2,7 @@
 
 using namespace std;
 
-
 class stack {
-
 private:
 	struct node {
 		int value;
@@ -13,7 +11,6 @@ private:
 	node* top;
 	bool is_empty();
 	unsigned int sz = 0;
-
 public:
 	stack() : top(nullptr) {}
 	~stack() {}
@@ -22,11 +19,9 @@ public:
 	void reverse(stack);
 };
 
-
 bool stack::is_empty() {
 	return !top;
 }
-
 
 void stack::push(int value) {
 	node* tmp = new node();
