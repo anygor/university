@@ -99,7 +99,7 @@ void hashmap::printTable() {    // UNNECESSARY
 	for (int i = 0; i < tableSize; i++) {
 		number = ItemsInBucket(i);
 		cout << "---------------\n";
-		cout << "index = " << i << endl;
+		cout << "bucket = " << i << endl;
 		cout << HashTable[i]->key << endl;
 		cout << HashTable[i]->value << endl;
 		cout << "amount of items = " << number << endl;
@@ -111,10 +111,10 @@ void hashmap::printTable() {    // UNNECESSARY
 void hashmap::printInIndex(int bucket) {   // UNNECESSARY
 	item* ptr = HashTable[bucket];
 	if (ptr->key == "none") {
-		cout << "index = " << bucket << " is empty" << endl;
+		cout << "bucket = " << bucket << " is empty" << endl;
 	}
 	else {
-		cout << "index " << bucket << " contains the following items: \n";
+		cout << "bucket " << bucket << " contains the following items: \n";
 		while (ptr != nullptr) {
 			cout << "---------------\n";
 			cout << ptr->key << endl;
