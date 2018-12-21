@@ -68,7 +68,6 @@ private:
 		node* next = nullptr;
 	};
 	int counter = 0;
-	bool is_empty();
 	node* head;
 public:
 	mylist();
@@ -80,10 +79,6 @@ public:
 
 mylist::mylist() :head(nullptr) {}
 
-bool mylist::is_empty() {
-	return !head;
-}
-
 void mylist::push(complex& item) {
 	node* tmp = new node();
 	tmp->value = item;
@@ -93,7 +88,7 @@ void mylist::push(complex& item) {
 }
 
 complex mylist::pop() {
-	node* tmp = new node;
+	node* tmp = new node();
 	tmp = head;
 	head = head->next;
 	counter--;
