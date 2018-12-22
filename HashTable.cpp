@@ -18,9 +18,6 @@ public:
 	int hashfunc(string key);
 	void addItem(string name, int points);
 	int getKey(string name);
-	int ItemsInBucket(int bucket);
-	void printTable();
-	void printInIndex(int bucket);
 };
 
 hashmap::hashmap() {
@@ -78,52 +75,8 @@ int hashmap::getKey(string name) {
 	}
 }
 
-int hashmap::ItemsInBucket(int bucket) {  // UNNECESSARY
-	int counter = 0;
-	if (HashTable[bucket]->key == "none") {
-		return counter;
-	}
-	else {
-		counter++;
-		item* pointer = HashTable[bucket];
-		while (pointer->next != nullptr) {
-			pointer = pointer->next;
-			counter++;
-		}
-	}
-	return counter;
-}
 
-void hashmap::printTable() {    // UNNECESSARY
-	int number;
-	for (int i = 0; i < tableSize; i++) {
-		number = ItemsInBucket(i);
-		cout << "---------------\n";
-		cout << "bucket = " << i << endl;
-		cout << HashTable[i]->key << endl;
-		cout << HashTable[i]->value << endl;
-		cout << "amount of items = " << number << endl;
-		cout << "---------------\n";
 
-	}
-}
-
-void hashmap::printInIndex(int bucket) {   // UNNECESSARY
-	item* ptr = HashTable[bucket];
-	if (ptr->key == "none") {
-		cout << "bucket = " << bucket << " is empty" << endl;
-	}
-	else {
-		cout << "bucket " << bucket << " contains the following items: \n";
-		while (ptr != nullptr) {
-			cout << "---------------\n";
-			cout << ptr->key << endl;
-			cout << ptr->value << " points" << endl;
-			cout << "---------------\n";
-			ptr = ptr->next;
-		}
-	}
-}
 
 int main() {
 	hashmap test;
